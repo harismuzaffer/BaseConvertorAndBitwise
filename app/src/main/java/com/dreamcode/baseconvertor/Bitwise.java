@@ -17,8 +17,9 @@ public class Bitwise extends Fragment {
 
     EditText first;
     EditText second;
-    TextView andvalue;
-    TextView orvalue;
+    EditText andvalue;
+    EditText orvalue;
+    EditText xorvalue;
 
     @Nullable
     @Override
@@ -29,9 +30,13 @@ public class Bitwise extends Fragment {
         second= view.findViewById(R.id.second);
         andvalue = view.findViewById(R.id.andvalue);
         orvalue = view.findViewById(R.id.orvalue);
+        xorvalue = view.findViewById(R.id.xorvalue);
+        andvalue.setKeyListener(null);
+        orvalue.setKeyListener(null);
+        xorvalue.setKeyListener(null);
 
-        first.addTextChangedListener(new FirstValueListner(first, second, andvalue, orvalue));
-        second.addTextChangedListener(new SecondValueListner(first, second, andvalue, orvalue));
+        first.addTextChangedListener(new FirstValueListner(first, second, andvalue, orvalue, xorvalue));
+        second.addTextChangedListener(new SecondValueListner(first, second, andvalue, orvalue, xorvalue));
 
         return view;
     }

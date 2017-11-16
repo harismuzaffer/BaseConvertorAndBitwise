@@ -32,5 +32,6 @@ public class BaseConverter extends Fragment {
         oct.addTextChangedListener(new OctValueListner(dec, bin, oct, hex));
         return view;
 
+
     }
 }

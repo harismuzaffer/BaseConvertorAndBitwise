@@ -57,21 +57,10 @@ public class BinValueListner implements TextWatcher {
             return;
         }
         String bin= "";
-        long l=0;
-        for(int i= ss.length()-1; i>=0; i--){
-            if(ss.charAt(ss.length()-i-1)=='1'){
-                int j=i;
-                long sum=1;
-                while(j!=0){
-                    sum*= 2;
-                    j--;
-                }
-                l+= sum;
-            }
-        }
+        long l= ConvertBase.convertToBinary(ss);
         bin= String.valueOf(l);
         dec.setText(bin);
-        hex.setText(Long.toHexString(l));
+        hex.setText(Long.toHexString(l).toUpperCase());
         oct.setText(Long.toOctalString(l));
     }
 }

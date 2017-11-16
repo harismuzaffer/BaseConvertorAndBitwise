@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     tools:context="com.dreamcode.baseconvertor.BaseConverter">
 
 
@@ -11,110 +12,147 @@
         android:id="@+id/dec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Dec"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/decvalue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/decvalue" />
 
     <EditText
         android:id="@+id/decvalue"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:digits="1234567890"
         android:ems="10"
+        android:focusedByDefault="true"
+        android:hint="Decimal"
         android:inputType="phone"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/octvalue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dec"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/oct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Oct"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/octvalue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/octvalue"
-        app:layout_constraintVertical_bias="0.50" />
+        app:layout_constraintTop_toTopOf="@+id/octvalue" />
 
     <EditText
         android:id="@+id/octvalue"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:digits="01234567"
         android:ems="10"
+        android:hint="Octal"
         android:inputType="phone"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hexvalue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/oct"
         app:layout_constraintTop_toBottomOf="@+id/decvalue" />
 
     <TextView
         android:id="@+id/hex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Hex"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/hexvalue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hexvalue" />
 
     <EditText
         android:id="@+id/hexvalue"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginBottom="85dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:digits="1234567890abcdefABCDEF"
         android:ems="10"
+        android:hint="Hexadecimal"
         android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/binvalue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hex"
         app:layout_constraintTop_toBottomOf="@+id/octvalue" />
 
     <TextView
         android:id="@+id/bin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Bin"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/binvalue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/binvalue" />
 
     <EditText
         android:id="@+id/binvalue"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="282dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:drawable/editbox_background_normal"
         android:digits="10"
         android:ems="10"
+        android:hint="Binary"
         android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bin"
         app:layout_constraintTop_toBottomOf="@+id/hexvalue" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="364dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:text=" Max decimal: 9223372036854775807\n Max octal: 777777777777777777777\n Max hexadecimal: 7FFFFFFFFFFFFFF\n Max Binary: 63 1's"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/binvalue" />
 
 </android.support.constraint.ConstraintLayout>

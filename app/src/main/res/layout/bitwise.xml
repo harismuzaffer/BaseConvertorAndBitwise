@@ -4,54 +4,123 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     tools:context="com.dreamcode.baseconvertor.Bitwise">
 
 
     <EditText
         android:id="@+id/first"
-        android:layout_width="157dp"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:digits="1234567890"
         android:ems="10"
+        android:hint="First Number"
         android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="@+id/second"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/second"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/second"
-        android:layout_width="157dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="428dp"
-        android:layout_marginEnd="4dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/andvalue"
+        android:id="@+id/and"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="AND"
-        app:layout_constraintBottom_toBottomOf="@+id/orvalue"
-        app:layout_constraintEnd_toStartOf="@+id/orvalue"
-        app:layout_constraintHorizontal_bias="0.277"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/orvalue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/andvalue" />
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:text="OR"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/xorvalue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/orvalue" />
 
     <TextView
-        android:id="@+id/orvalue"
+        android:id="@+id/xor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="328dp"
-        android:layout_marginEnd="64dp"
-        android:text="OR"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:text="XOR"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/xorvalue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/xorvalue" />
+
+    <EditText
+        android:id="@+id/andvalue"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="64dp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTintMode="src_over"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="AND Value"
+        android:inputType="none"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toTopOf="@+id/orvalue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/orvalue"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="OR Value"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/xorvalue"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/xorvalue"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="304dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:hint="XOR Value"
+        android:inputType="none"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/second"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:drawable/editbox_background_normal"
+        android:digits="1234567890"
+        android:ems="10"
+        android:hint="Second Number"
+        android:inputType="phone"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>
