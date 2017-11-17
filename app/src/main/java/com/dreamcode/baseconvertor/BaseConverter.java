@@ -1,5 +1,6 @@
 package com.dreamcode.baseconvertor;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ public class BaseConverter extends Fragment {
     EditText bin;
     EditText hex;
     EditText oct;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -26,10 +28,10 @@ public class BaseConverter extends Fragment {
         bin= view.findViewById(R.id.binvalue);
         hex= view.findViewById(R.id.hexvalue);
         oct= view.findViewById(R.id.octvalue);
-        dec.addTextChangedListener(new DecValueListner(dec, bin, oct, hex));
-        bin.addTextChangedListener(new BinValueListner(dec, bin, oct, hex));
-        hex.addTextChangedListener(new HexValueListner(dec, bin, oct, hex));
-        oct.addTextChangedListener(new OctValueListner(dec, bin, oct, hex));
+        dec.addTextChangedListener(new DecValueListner(dec, bin, oct, hex, getContext()));
+        bin.addTextChangedListener(new BinValueListner(dec, bin, oct, hex, getContext()));
+        hex.addTextChangedListener(new HexValueListner(dec, bin, oct, hex, getContext()));
+        oct.addTextChangedListener(new OctValueListner(dec, bin, oct, hex, getContext()));
         return view;
 
 

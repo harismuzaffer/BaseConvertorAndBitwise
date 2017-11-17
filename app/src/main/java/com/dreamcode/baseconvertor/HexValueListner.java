@@ -1,8 +1,11 @@
 package com.dreamcode.baseconvertor;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.math.BigInteger;
 
@@ -17,12 +20,14 @@ public class HexValueListner implements TextWatcher{
     EditText oct;
     EditText hex;
     String num;
+    Context context;
 
-    public HexValueListner(EditText dec, EditText bin, EditText oct, EditText hex) {
+    public HexValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
         this.bin = bin;
         this.oct = oct;
         this.hex = hex;
+        this.context = context;
     }
 
     @Override
@@ -66,6 +71,9 @@ public class HexValueListner implements TextWatcher{
             converted = converted.add(raisedPower(16, i).multiply(new BigInteger(String.valueOf(n))));
         }
         if(converted.compareTo(new BigInteger("9223372036854775807")) ==1){
+            Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.LEFT, 320, -10);
+            toast.show();
             hex.setText(num);
             hex.setSelection(hex.getText().length());
             return;

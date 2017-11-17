@@ -6,7 +6,7 @@ package com.dreamcode.baseconvertor;
 
 public class ConvertBase {
 
-    public static long convertToBinary(String s){
+    public static long convertToDecimal(String s){
         String num= s;
         long l=0;
         for(int i= num.length()-1; i>=0; i--){

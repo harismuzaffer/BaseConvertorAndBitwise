@@ -3,14 +3,19 @@ package com.dreamcode.baseconvertor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
+import android.text.method.DigitsKeyListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
- * Created by ADMINIBM on 11/12/2017.
+ * Created by harismuzaffer on 11/12/2017.
  */
 
 public class Bitwise extends Fragment {
@@ -20,6 +25,9 @@ public class Bitwise extends Fragment {
     EditText andvalue;
     EditText orvalue;
     EditText xorvalue;
+    RadioGroup format;
+    RadioButton decradio;
+    RadioButton binradio;
 
     @Nullable
     @Override
@@ -34,9 +42,38 @@ public class Bitwise extends Fragment {
         andvalue.setKeyListener(null);
         orvalue.setKeyListener(null);
         xorvalue.setKeyListener(null);
+        format= view.findViewById(R.id.radioGroup);
+        binradio = format.findViewById(R.id.binradio);
+        binradio.setChecked(true);
+        Flag.f= "binary";
+        first.setKeyListener(DigitsKeyListener.getInstance("01"));
+        second.setKeyListener(DigitsKeyListener.getInstance("01"));
 
-        first.addTextChangedListener(new FirstValueListner(first, second, andvalue, orvalue, xorvalue));
-        second.addTextChangedListener(new SecondValueListner(first, second, andvalue, orvalue, xorvalue));
+        format.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(radioGroup.getCheckedRadioButtonId() == radioGroup.getChildAt(0).getId()){
+                    Flag.f= "binary";
+                    first.setHint("First Binary");
+                    second.setHint("Second Binary");
+                    first.setText("");
+                    second.setText("");
+                    first.setKeyListener(DigitsKeyListener.getInstance("01"));
+                    second.setKeyListener(DigitsKeyListener.getInstance("01"));
+                }
+                else{
+                    Flag.f= "decimal";
+                    first.setHint("First Decimal");
+                    second.setHint("Second Decimal");
+                    first.setText("");
+                    second.setText("");
+                    first.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                    second.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                }
+            }
+        });
+        first.addTextChangedListener(new FirstValueListner(first, second, andvalue, orvalue, xorvalue, getContext()));
+        second.addTextChangedListener(new SecondValueListner(first, second, andvalue, orvalue, xorvalue, getContext()));
 
         return view;
     }

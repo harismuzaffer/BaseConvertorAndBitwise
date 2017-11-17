@@ -1,9 +1,12 @@
 package com.dreamcode.baseconvertor;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.math.BigInteger;
 
@@ -21,12 +24,14 @@ public class DecValueListner implements TextWatcher {
     EditText oct;
     EditText hex;
     String num;
+    Context context;
 
-    public DecValueListner(EditText dec, EditText bin, EditText oct, EditText hex) {
+    public DecValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
         this.bin = bin;
         this.oct = oct;
         this.hex = hex;
+        this.context = context;
     }
 
     @Override
@@ -56,7 +61,9 @@ public class DecValueListner implements TextWatcher {
         if (d.compareTo(new BigInteger("9223372036854775807"))==1) {
             dec.setText(num);
             dec.setSelection(dec.getText().length());
-            return;
+            Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.LEFT, 320, -10);
+            toast.show();            return;
         }
         long dd = Long.parseLong(d.toString());
         long ddd = dd;
