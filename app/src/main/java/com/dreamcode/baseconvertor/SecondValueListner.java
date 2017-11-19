@@ -61,7 +61,7 @@ public class SecondValueListner implements TextWatcher {
 
         if(Flag.f.equals("binary")){
             if(editable.toString().length() > 32){
-                Toast toast=Toast.makeText(context,"MAX 32 bits",Toast.LENGTH_SHORT);
+                Toast toast=Toast.makeText(context,"MAX VALUE",Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.LEFT, 450, -10);
                 toast.show();
                 second.setText(num);
@@ -85,8 +85,8 @@ public class SecondValueListner implements TextWatcher {
         String ss= first.getText().toString();
         l1= new BigInteger(s);
         if(l1.compareTo(new BigInteger("9223372036854775807"))==1){
-            Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 450, -10);
+            Toast toast=Toast.makeText(context,"MAX VALUE",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.LEFT, 100, -10);
             toast.show();
             second.setText(num);
             second.setSelection(second.getText().length());

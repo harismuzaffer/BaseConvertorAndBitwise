@@ -1,5 +1,8 @@
 package com.dreamcode.baseconvertor;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +16,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 /**
  * Created by harismuzaffer on 11/12/2017.
@@ -28,12 +34,17 @@ public class Bitwise extends Fragment {
     RadioGroup format;
     RadioButton decradio;
     RadioButton binradio;
+    private AdView topAd;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.bitwise, null);
+        topAd = view.findViewById(R.id.adViewTop);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        topAd.loadAd(adRequest);
         first= view.findViewById(R.id.first);
         second= view.findViewById(R.id.second);
         andvalue = view.findViewById(R.id.andvalue);
@@ -77,4 +88,28 @@ public class Bitwise extends Fragment {
 
         return view;
     }
+    @Override
+    public void onPause() {
+        if (topAd != null) {
+            topAd.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (topAd != null) {
+            topAd.resume();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (topAd != null) {
+            topAd.destroy();
+        }
+        super.onDestroy();
+    }
+
 }

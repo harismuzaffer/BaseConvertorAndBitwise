@@ -58,8 +58,8 @@ public class FirstValueListner  implements TextWatcher{
             return;
         }
         if(Flag.f.equals("binary")){
-            if(editable.toString().length() > 32){
-                Toast toast=Toast.makeText(context,"MAX 32 digits",Toast.LENGTH_SHORT);
+            if(editable.toString().length() > 63){
+                Toast toast=Toast.makeText(context,"MAX VALUE",Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.LEFT, 450, -10);
                 toast.show();
                 first.setText(num);
@@ -82,8 +82,8 @@ public class FirstValueListner  implements TextWatcher{
         String ss= second.getText().toString();
         l1= new BigInteger(s);
         if(l1.compareTo(new BigInteger("9223372036854775807"))==1){
-            Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 450, -10);
+            Toast toast=Toast.makeText(context,"MAX VALUE",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.LEFT, 100, -10);
             toast.show();
             first.setText(num);
             first.setSelection(first.getText().length());

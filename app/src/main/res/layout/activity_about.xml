@@ -15,7 +15,7 @@
         android:text="App developed by Haris Muzaffer\n\nEmail: harismuzaffer@gmail.com\nFaisalabad, Sopore, Kashmir"
         android:textAlignment="viewStart"
         android:textColor="@android:color/background_light"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"

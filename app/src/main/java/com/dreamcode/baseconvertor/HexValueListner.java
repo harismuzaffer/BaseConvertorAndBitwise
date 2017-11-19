@@ -72,7 +72,7 @@ public class HexValueListner implements TextWatcher{
         }
         if(converted.compareTo(new BigInteger("9223372036854775807")) ==1){
             Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 320, -10);
+            toast.setGravity(Gravity.LEFT, 100, -10);
             toast.show();
             hex.setText(num);
             hex.setSelection(hex.getText().length());

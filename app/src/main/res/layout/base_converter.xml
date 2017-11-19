@@ -1,158 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Dark"
-    tools:context="com.dreamcode.baseconvertor.BaseConverter">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.dreamcode.baseconvertor.BaseConverter">
 
 
-    <TextView
-        android:id="@+id/dec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Decimal"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/decvalue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/decvalue" />
+            <TextView
+                android:id="@+id/dec"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Decimal"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/decvalue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/decvalue" />
 
-    <EditText
-        android:id="@+id/decvalue"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:digits="1234567890"
-        android:ems="10"
-        android:focusedByDefault="true"
-        android:hint="Decimal"
-        android:inputType="phone"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/octvalue"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/decvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="24dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:digits="1234567890"
+                android:ems="10"
+                android:focusedByDefault="true"
+                android:hint="Decimal"
+                android:inputType="phone"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/octvalue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dec" />
 
-    <TextView
-        android:id="@+id/oct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Octal"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/octvalue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/octvalue" />
+            <TextView
+                android:id="@+id/oct"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Octal"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/octvalue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/octvalue" />
 
-    <EditText
-        android:id="@+id/octvalue"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:digits="01234567"
-        android:ems="10"
-        android:hint="Octal"
-        android:inputType="phone"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/hexvalue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decvalue" />
+            <EditText
+                android:id="@+id/octvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="24dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:digits="01234567"
+                android:ems="10"
+                android:hint="Octal"
+                android:inputType="phone"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/hexvalue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/oct"
+                app:layout_constraintTop_toBottomOf="@+id/decvalue" />
 
-    <TextView
-        android:id="@+id/hex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Hex"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/hexvalue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hexvalue" />
+            <TextView
+                android:id="@+id/hex"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Hex"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/hexvalue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/hexvalue" />
 
-    <EditText
-        android:id="@+id/hexvalue"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="85dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:digits="1234567890abcdefABCDEF"
-        android:ems="10"
-        android:hint="Hexadecimal"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/binvalue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/octvalue" />
+            <EditText
+                android:id="@+id/hexvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="85dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="24dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:digits="1234567890abcdefABCDEF"
+                android:ems="10"
+                android:hint="Hexadecimal"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/binvalue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hex"
+                app:layout_constraintTop_toBottomOf="@+id/octvalue" />
 
-    <TextView
-        android:id="@+id/bin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Binary"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/binvalue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/binvalue" />
+            <TextView
+                android:id="@+id/bin"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Binary"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/binvalue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/binvalue" />
 
-    <EditText
-        android:id="@+id/binvalue"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:digits="10"
-        android:ems="10"
-        android:hint="Binary"
-        android:inputType="phone"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hexvalue" />
+            <EditText
+                android:id="@+id/binvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="24dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:digits="10"
+                android:ems="10"
+                android:hint="Binary"
+                android:inputType="phone"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bin"
+                app:layout_constraintTop_toBottomOf="@+id/hexvalue" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="364dp" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="364dp"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
-        android:text=" Max decimal: 9223372036854775807\n Max octal: 777777777777777777777\n Max hexadecimal: 7FFFFFFFFFFFFFF\n Max Binary: 63 1's"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/binvalue" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Max decimal: 9223372036854775807, Max Binary: 63 1's"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.025"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/binvalue" />
+
+            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adViewTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                ads:adSize="SMART_BANNER"
+                ads:adUnitId="@string/adTop"
+                ads:layout_constraintEnd_toEndOf="parent"
+                ads:layout_constraintStart_toStartOf="parent"
+                ads:layout_constraintTop_toBottomOf="@+id/textView"
+                ads:layout_editor_absoluteX="46dp"
+                ads:layout_editor_absoluteY="196dp">
+
+            </com.google.android.gms.ads.AdView>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

@@ -51,7 +51,7 @@ public class BinValueListner implements TextWatcher {
         String ss= s.toString();
         if(ss.length()> 63){
             Toast toast=Toast.makeText(context,"MAX 63 bits",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 320, -10);
+            toast.setGravity(Gravity.LEFT, 100, -10);
             toast.show();
             bin.setText(num);
             bin.setSelection(bin.getText().length());
