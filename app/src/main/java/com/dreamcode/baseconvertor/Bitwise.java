@@ -1,21 +1,15 @@
 package com.dreamcode.baseconvertor;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.InputType;
 import android.text.method.DigitsKeyListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,17 +28,17 @@ public class Bitwise extends Fragment {
     RadioGroup format;
     RadioButton decradio;
     RadioButton binradio;
-    private AdView topAd;
+    private AdView bottomad;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.bitwise, null);
-        topAd = view.findViewById(R.id.adViewTop);
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
-        topAd.loadAd(adRequest);
+        bottomad = view.findViewById(R.id.adViewBottom);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//        //bottomad.loadAd(adRequest);
         first= view.findViewById(R.id.first);
         second= view.findViewById(R.id.second);
         andvalue = view.findViewById(R.id.andvalue);
@@ -90,25 +84,25 @@ public class Bitwise extends Fragment {
     }
     @Override
     public void onPause() {
-        if (topAd != null) {
-            topAd.pause();
-        }
+//        if (bottomad != null) {
+//            bottomad.pause();
+//        }
         super.onPause();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (topAd != null) {
-            topAd.resume();
-        }
+//        if (bottomad != null) {
+//            bottomad.resume();
+//        }
     }
 
     @Override
     public void onDestroy() {
-        if (topAd != null) {
-            topAd.destroy();
-        }
+//        if (bottomad != null) {
+//            bottomad.destroy();
+//        }
         super.onDestroy();
     }
 

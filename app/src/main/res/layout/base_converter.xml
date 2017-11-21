@@ -22,7 +22,7 @@
 
 
             <TextView
-                android:id="@+id/dec"
+                android:id="@+id/textView3"
                 android:layout_width="77dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -50,7 +50,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/octvalue"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/dec" />
+                app:layout_constraintStart_toEndOf="@+id/textView3" />
 
             <TextView
                 android:id="@+id/oct"
@@ -178,25 +178,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/binvalue" />
 
-            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adViewTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="2dp"
-                ads:adSize="SMART_BANNER"
-                ads:adUnitId="@string/adTop"
-                ads:layout_constraintEnd_toEndOf="parent"
-                ads:layout_constraintStart_toStartOf="parent"
-                ads:layout_constraintTop_toBottomOf="@+id/textView"
-                ads:layout_editor_absoluteX="46dp"
-                ads:layout_editor_absoluteY="196dp">
-
-            </com.google.android.gms.ads.AdView>
-
 
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/adBottom1"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintBottom_toBottomOf="parent">
+
+    </com.google.android.gms.ads.AdView>
+
 
 </android.support.constraint.ConstraintLayout>

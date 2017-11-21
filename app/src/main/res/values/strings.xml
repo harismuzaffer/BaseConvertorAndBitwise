@@ -2,7 +2,7 @@
     <string name="app_name">BaseConvertor and Bitwise</string>
     <string name="title_activity_tabbed">Base Converter and Bitwise</string>
     <string name="about">About App</string>
-    <string name="adTop">"ca-app-pub-1135667094554150/9008899285"</string>
-    <string name="adTop2">"ca-app-pub-1135667094554150/2150657522"</string>
+    <string name="adBottom1">"ca-app-pub-1135667094554150/9008899285"</string>
+    <string name="adBottom2">"ca-app-pub-1135667094554150/2150657522"</string>
     <string name="adFull">"ca-app-pub-1135667094554150/5633842624"</string>
 </resources>
