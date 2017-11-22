@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdView;
 
 /**
  * Created by harismuzaffer on 11/12/2017.
@@ -28,14 +28,14 @@ public class Bitwise extends Fragment {
     RadioGroup format;
     RadioButton decradio;
     RadioButton binradio;
-    private AdView bottomad;
+    //private AdView bottomad;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.bitwise, null);
-        bottomad = view.findViewById(R.id.adViewBottom);
+        //bottomad = view.findViewById(R.id.adViewBottom);
 //        AdRequest adRequest = new AdRequest.Builder()
 //                .build();
 //        //bottomad.loadAd(adRequest);

@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import java.math.BigInteger;
 
-import static com.dreamcode.baseconvertor.R.id.dec;
-
 /**
  * Created by harismuzaffer on 11/5/2017.
  */
