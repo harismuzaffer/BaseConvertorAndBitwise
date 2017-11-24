@@ -1,4 +1,4 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
 import android.content.Context;
 import android.text.Editable;
@@ -13,7 +13,7 @@ import java.math.BigInteger;
  * Created by harismuzaffer on 11/7/2017.
  */
 
-public class OctValueListner implements TextWatcher {
+public class HexValueListner implements TextWatcher{
 
     EditText dec;
     EditText bin;
@@ -22,7 +22,7 @@ public class OctValueListner implements TextWatcher {
     String num;
     Context context;
 
-    public OctValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
+    public HexValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
         this.bin = bin;
         this.oct = oct;
@@ -34,6 +34,7 @@ public class OctValueListner implements TextWatcher {
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
         num = charSequence.toString();
+
     }
 
     @Override
@@ -44,47 +45,57 @@ public class OctValueListner implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
-        if(bin.isFocused() || dec.isFocused() || hex.isFocused()){
+        if(bin.isFocused() || dec.isFocused() || oct.isFocused()){
             return;
         }
 
-        String octvalue= s.toString();
+        String hexvalue= s.toString();
         BigInteger converted= new BigInteger("0");
-        for(int i= octvalue.length()-1; i >=0; i--){
-            char c= octvalue.charAt((octvalue.length()-i)-1);
+        for(int i= hexvalue.length()-1; i >=0; i--){
+            char c= hexvalue.charAt((hexvalue.length()-i)-1);
             int n;
-            n= ((int) c) - 48;
-            converted = converted.add(raisedPower(8, i).multiply(new BigInteger(String.valueOf(n))));
+            if(c=='A' || c=='a')
+                n= 10;
+            else if(c=='B' || c=='b')
+                n=11;
+            else if(c=='c' || c=='c')
+                n=12;
+            else if(c=='D' || c=='d')
+                n=13;
+            else if(c=='E' || c=='e')
+                n=14;
+            else if(c=='F' || c=='f')
+                n=15;
+            else
+                n= ((int) c) - 48;
+            converted = converted.add(raisedPower(16, i).multiply(new BigInteger(String.valueOf(n))));
         }
-
         if(converted.compareTo(new BigInteger("9223372036854775807")) ==1){
-            Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 100, -10);
-            toast.show();
-            oct.setText(num);
-            oct.setSelection(oct.getText().length());
+            hex.setText(num);
+            hex.setSelection(hex.getText().length());
             return;
         }
         if(s.toString().equals("")){
-            hex.setText("");
             dec.setText("");
+            oct.setText("");
             bin.setText("");
             return;
         }
         else {
+            bin.setText(StringUtility.insertCommas(new StringBuilder(Long.toBinaryString(Long.parseLong(converted.toString())))));
+            oct.setText(Long.toOctalString(Long.parseLong(converted.toString())));
             dec.setText(String.valueOf(converted));
-            bin.setText(Long.toBinaryString(Long.parseLong(converted.toString())));
-            hex.setText(Long.toHexString(Long.parseLong(converted.toString())).toUpperCase());
         }
-    }
 
+    }
     public BigInteger raisedPower(int base, int exponent){
         int exp= exponent;
         BigInteger result= new BigInteger("1");
         while(exp!=0){
-            result = result.multiply(new BigInteger(String.valueOf(base)));
+            result =result.multiply(new BigInteger(String.valueOf(base)));
             exp--;
         }
+
         return result;
     }
 }

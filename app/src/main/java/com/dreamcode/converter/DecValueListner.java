@@ -1,14 +1,12 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.math.BigInteger;
 
@@ -61,12 +59,6 @@ public class DecValueListner implements TextWatcher {
         if (d.compareTo(new BigInteger("9223372036854775807"))==1) {
             dec.setText(num);
             dec.setSelection(dec.getText().length());
-            Toast toast=Toast.makeText(context,"Number larger than MAX",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 100, -10);
-            toast.show();
-            Snackbar snackbar = Snackbar
-                    .make(new CoordinatorLayout(context), "MAX Number!!!", Snackbar.LENGTH_LONG);
-            snackbar.show();
             return;
         }
         long dd = Long.parseLong(d.toString());
@@ -81,7 +73,7 @@ public class DecValueListner implements TextWatcher {
             ss = "0";
         StringBuilder sss = new StringBuilder(ss);
         sss.reverse();
-        bin.setText(sss.toString());
+        bin.setText(StringUtility.insertCommas(sss));
         if(s.toString().equals("")){
             hex.setText("");
             oct.setText("");

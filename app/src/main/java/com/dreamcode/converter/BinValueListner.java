@@ -1,11 +1,9 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,6 +19,7 @@ public class BinValueListner implements TextWatcher {
     EditText hex;
     String num;
     Context context;
+    String flag;
 
     public BinValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
@@ -28,11 +27,11 @@ public class BinValueListner implements TextWatcher {
         this.oct = oct;
         this.hex = hex;
         this.context = context;
+        flag = "ndone";
     }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
         num= charSequence.toString();
     }
 
@@ -48,15 +47,19 @@ public class BinValueListner implements TextWatcher {
             return;
         }
 
-        String ss= s.toString();
+        String ss= s.toString().replaceAll(",", "");
         if(ss.length()> 63){
-            Toast toast=Toast.makeText(context,"MAX 63 bits",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 100, -10);
-            toast.show();
             bin.setText(num);
             bin.setSelection(bin.getText().length());
             return;
         }
+        if(flag == "ndone"){
+            flag = "done";
+            bin.setText(StringUtility.insertCommas(new StringBuilder(s.toString().replaceAll(",", ""))));
+            bin.setSelection(bin.getText().length());
+            return;
+        }
+        flag = "ndone";
         if(ss.equals("")){
             dec.setText("");
             hex.setText("");

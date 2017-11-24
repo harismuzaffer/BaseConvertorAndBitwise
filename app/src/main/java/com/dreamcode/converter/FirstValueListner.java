@@ -1,12 +1,10 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.math.BigInteger;
@@ -25,6 +23,7 @@ public class FirstValueListner  implements TextWatcher{
     EditText xorvalue;
     String num;
     Context context;
+    String flag;
 
     public FirstValueListner(EditText first, EditText second, EditText andvalue, EditText orvalue, EditText xorvalue, Context context) {
         this.first = first;
@@ -33,6 +32,7 @@ public class FirstValueListner  implements TextWatcher{
         this.orvalue = orvalue;
         this.xorvalue = xorvalue;
         this.context = context;
+        flag = "ndone";
     }
 
     @Override
@@ -58,22 +58,26 @@ public class FirstValueListner  implements TextWatcher{
             return;
         }
         if(Flag.f.equals("binary")){
-            if(editable.toString().length() > 63){
-                Toast toast=Toast.makeText(context,"MAX VALUE",Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.LEFT, 450, -10);
-                toast.show();
+            if(editable.toString().replaceAll(",", "").length() > 63){
                 first.setText(num);
                 first.setSelection(first.getText().length());
                 return;
             }
             else {
-                ll1= ConvertBase.convertToDecimal(editable.toString());
-                ll2= ConvertBase.convertToDecimal(second.getText().toString());
+                if(flag == "ndone"){
+                    flag = "done";
+                    first.setText(StringUtility.insertCommas(new StringBuilder(editable.toString().replaceAll(",", ""))));
+                    first.setSelection(first.getText().length());
+                    return;
+                }
+                flag = "ndone";
+                ll1= ConvertBase.convertToDecimal(editable.toString().replaceAll(",",""));
+                ll2= ConvertBase.convertToDecimal(second.getText().toString().replaceAll(",", ""));
                 if(second.getText().toString().equals(""))
                     return;
-                andvalue.setText(Long.toBinaryString(ll1&ll2));
-                orvalue.setText(Long.toBinaryString(ll1|ll2));
-                xorvalue.setText(Long.toBinaryString(ll1^ll2));
+                andvalue.setText(StringUtility.insertCommas(new StringBuilder(Long.toBinaryString(ll1 & ll2))));
+                orvalue.setText(StringUtility.insertCommas(new StringBuilder(Long.toBinaryString(ll1 | ll2))));
+                xorvalue.setText(StringUtility.insertCommas(new StringBuilder(Long.toBinaryString(ll1 ^ ll2))));
                 return;
             }
         }
@@ -82,9 +86,6 @@ public class FirstValueListner  implements TextWatcher{
         String ss= second.getText().toString();
         l1= new BigInteger(s);
         if(l1.compareTo(new BigInteger("9223372036854775807"))==1){
-            Toast toast=Toast.makeText(context,"MAX VALUE",Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.LEFT, 100, -10);
-            toast.show();
             first.setText(num);
             first.setSelection(first.getText().length());
             return;
