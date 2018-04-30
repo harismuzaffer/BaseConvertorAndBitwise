@@ -1,57 +1,214 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
-    android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dreamcode.baseconvertor.Bitwise">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Dark">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.dreamcode.converter.Bitwise">
 
 
-    <EditText
-        android:id="@+id/first"
-        android:layout_width="157dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="@+id/second"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/second"
-        app:layout_constraintVertical_bias="0.0" />
+            <LinearLayout
+                android:id="@+id/num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp">
 
-    <EditText
-        android:id="@+id/second"
-        android:layout_width="157dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="428dp"
-        android:layout_marginEnd="4dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/andvalue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="AND"
-        app:layout_constraintBottom_toBottomOf="@+id/orvalue"
-        app:layout_constraintEnd_toStartOf="@+id/orvalue"
-        app:layout_constraintHorizontal_bias="0.277"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/orvalue" />
+                    <EditText
+                        android:id="@+id/first"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:digits="1234567890"
+                        android:ems="10"
+                        android:hint="First Binary"
+                        android:inputType="phone"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/second"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:id="@+id/orvalue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="328dp"
-        android:layout_marginEnd="64dp"
-        android:text="OR"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                    <EditText
+                        android:id="@+id/second"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:digits="1234567890"
+                        android:ems="10"
+                        android:hint="Second Binary"
+                        android:inputType="phone"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/first" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/and"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="AND"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/andvalue"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/andvalue" />
+
+            <TextView
+                android:id="@+id/or"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="OR"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/orvalue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/orvalue" />
+
+            <TextView
+                android:id="@+id/xor"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="XOR"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/xorvalue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/xorvalue" />
+
+            <EditText
+                android:id="@+id/andvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/editbox_background"
+                android:backgroundTintMode="src_over"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:hint="AND Value"
+                android:inputType="none"
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/and"
+                app:layout_constraintTop_toBottomOf="@+id/num" />
+
+            <EditText
+                android:id="@+id/orvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="55dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="OR Value"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/or"
+                app:layout_constraintTop_toBottomOf="@+id/andvalue" />
+
+            <EditText
+                android:id="@+id/xorvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="55dp"
+                android:background="@android:drawable/editbox_background"
+                android:ems="10"
+                android:hint="XOR Value"
+                android:inputType="none"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/xor"
+                app:layout_constraintTop_toBottomOf="@+id/orvalue" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Format: "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/xorvalue"
+                app:layout_constraintTop_toBottomOf="@+id/xorvalue">
+
+                <RadioButton
+                    android:id="@+id/binradio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_bright"
+                    android:text="Binary"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <RadioButton
+                    android:id="@+id/decradio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@android:color/holo_blue_bright"
+                    android:text="Decimal"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </RadioGroup>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+
 </android.support.constraint.ConstraintLayout>

@@ -1,9 +1,9 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,17 +18,20 @@ public class BinValueListner implements TextWatcher {
     EditText oct;
     EditText hex;
     String num;
+    Context context;
+    String flag;
 
-    public BinValueListner(EditText dec, EditText bin, EditText oct, EditText hex) {
+    public BinValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
         this.bin = bin;
         this.oct = oct;
         this.hex = hex;
+        this.context = context;
+        flag = "ndone";
     }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
         num= charSequence.toString();
     }
 
@@ -44,12 +47,19 @@ public class BinValueListner implements TextWatcher {
             return;
         }
 
-        String ss= s.toString();
+        String ss= s.toString().replaceAll(",", "");
         if(ss.length()> 63){
             bin.setText(num);
             bin.setSelection(bin.getText().length());
             return;
         }
+        if(flag == "ndone"){
+            flag = "done";
+            bin.setText(StringUtility.insertCommas(new StringBuilder(s.toString().replaceAll(",", ""))));
+            bin.setSelection(bin.getText().length());
+            return;
+        }
+        flag = "ndone";
         if(ss.equals("")){
             dec.setText("");
             hex.setText("");
@@ -57,21 +67,10 @@ public class BinValueListner implements TextWatcher {
             return;
         }
         String bin= "";
-        long l=0;
-        for(int i= ss.length()-1; i>=0; i--){
-            if(ss.charAt(ss.length()-i-1)=='1'){
-                int j=i;
-                long sum=1;
-                while(j!=0){
-                    sum*= 2;
-                    j--;
-                }
-                l+= sum;
-            }
-        }
+        long l= ConvertBase.convertToDecimal(ss);
         bin= String.valueOf(l);
         dec.setText(bin);
-        hex.setText(Long.toHexString(l));
+        hex.setText(Long.toHexString(l).toUpperCase());
         oct.setText(Long.toOctalString(l));
     }
 }

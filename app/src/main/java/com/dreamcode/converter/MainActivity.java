@@ -1,38 +1,28 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
+    private AdView bottomAd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,27 +30,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tabbed);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        bottomAd = findViewById(R.id.adViewBottom);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .build();
+//        bottomAd.loadAd(adRequest);
+
+        //mInterstitialAd = new InterstitialAd(this);
+
+        // set the ad unit ID
+//        mInterstitialAd.setAdUnitId(getString(R.string.adFull));
+//
+//        AdRequest adRequest2 = new AdRequest.Builder()
+//                .build();
+//
+//        // Load ads into Interstitial Ads
+//        mInterstitialAd.loadAd(adRequest2);
 
     }
 
@@ -80,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.about) {
+            Intent intent= new Intent(MainActivity.this, About.class);
+            startActivity(intent);
             return true;
         }
 
@@ -95,17 +91,34 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if(position==1){
+            if(position==0){
+                return new BaseConverter();
+            }
+            else{
+//                mInterstitialAd.setAdListener(new AdListener() {
+//                    @Override
+//                    public void onAdLoaded() {
+//                        super.onAdLoaded();
+//                        mInterstitialAd.show();
+//                    }
+//                });
                 return new Bitwise();
             }
-            else
-                return new BaseConverter();
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 2;
         }
     }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        bottomAd = findViewById(R.id.adViewBottom);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        bottomAd.loadAd(adRequest);
+    }
+
 }

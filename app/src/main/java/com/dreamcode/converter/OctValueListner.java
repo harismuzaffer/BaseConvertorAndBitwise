@@ -1,8 +1,11 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.math.BigInteger;
 
@@ -17,12 +20,14 @@ public class OctValueListner implements TextWatcher {
     EditText oct;
     EditText hex;
     String num;
+    Context context;
 
-    public OctValueListner(EditText dec, EditText bin, EditText oct, EditText hex) {
+    public OctValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
         this.bin = bin;
         this.oct = oct;
         this.hex = hex;
+        this.context = context;
     }
 
     @Override
@@ -65,7 +70,7 @@ public class OctValueListner implements TextWatcher {
         }
         else {
             dec.setText(String.valueOf(converted));
-            bin.setText(Long.toBinaryString(Long.parseLong(converted.toString())));
+            bin.setText(StringUtility.insertCommas(new StringBuilder(Long.toBinaryString(Long.parseLong(converted.toString())))));
             hex.setText(Long.toHexString(Long.parseLong(converted.toString())).toUpperCase());
         }
     }

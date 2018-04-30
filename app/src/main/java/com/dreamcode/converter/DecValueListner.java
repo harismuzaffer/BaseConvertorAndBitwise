@@ -1,13 +1,14 @@
-package com.dreamcode.baseconvertor;
+package com.dreamcode.converter;
 
+import android.content.Context;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.view.Gravity;
 import android.widget.EditText;
 
 import java.math.BigInteger;
-
-import static com.dreamcode.baseconvertor.R.id.dec;
 
 /**
  * Created by harismuzaffer on 11/5/2017.
@@ -21,12 +22,14 @@ public class DecValueListner implements TextWatcher {
     EditText oct;
     EditText hex;
     String num;
+    Context context;
 
-    public DecValueListner(EditText dec, EditText bin, EditText oct, EditText hex) {
+    public DecValueListner(EditText dec, EditText bin, EditText oct, EditText hex, Context context) {
         this.dec = dec;
         this.bin = bin;
         this.oct = oct;
         this.hex = hex;
+        this.context = context;
     }
 
     @Override
@@ -70,7 +73,7 @@ public class DecValueListner implements TextWatcher {
             ss = "0";
         StringBuilder sss = new StringBuilder(ss);
         sss.reverse();
-        bin.setText(sss.toString());
+        bin.setText(StringUtility.insertCommas(sss));
         if(s.toString().equals("")){
             hex.setText("");
             oct.setText("");
